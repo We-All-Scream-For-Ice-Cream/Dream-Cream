@@ -2,9 +2,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "../style.css";
-// import { addToCart } from "../../server/db/cart";
 
-function SingleIceCream() {
+function SingleIceCream({ token, userId }) {
   const params = useParams();
   const icecreamId = params.id;
 
@@ -16,8 +15,6 @@ function SingleIceCream() {
     async function fetchSingleIceCream() {
       try {
         const { data } = await axios.get(`/api/ice_cream/${icecreamId}`);
-
-        // console.log(data);
         setIceCream(data);
       } catch (err) {
         setError("No icecream found with that name, " + icecreamId);
@@ -31,7 +28,19 @@ function SingleIceCream() {
 
   const handleAddToCart = async () => {
     try {
-      // await addToCart(userId, icecreamId);
+      if (!token) {
+        alert("Please log in to add items to cart.");
+        return;
+      }
+      await axios.post(
+        "/api/cart/add-to-cart",
+        { userId: userId, icecreamId: icecreamId },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       alert("Item added to cart successfully!");
     } catch (error) {
       console.error("Error adding item to cart:", error);
@@ -50,10 +59,10 @@ function SingleIceCream() {
       </h2>
       <h3>{icecream.brand}</h3>
       <div className="images-container">
-        <img src={icecream.imageUrl} />
-        <img src={icecream.nutrition} />
+        <img src={icecream.imageurl} alt="" />
+        <img src={icecream.nutrition} alt="" />
       </div>
-      <p>Price: $ {icecream.price}</p>
+      <p>$ {icecream.price}</p>
       <button onClick={handleAddToCart}>Add to Cart</button>
       <button onClick={() => navigate("/")}>Back to the List</button>
     </div>

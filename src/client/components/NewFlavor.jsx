@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom/dist";
 import axios from "axios";
 
 export default function NewFlavorForm() {
@@ -21,8 +21,6 @@ export default function NewFlavorForm() {
     } catch (error) {
       console.error(error);
     }
-
-    navigate("/");
   };
 
   async function handleSubmit(event) {
@@ -37,11 +35,17 @@ export default function NewFlavorForm() {
       nutrition,
     };
 
+    setFlavor("");
+    setBrand("");
+    setSize("");
+    setImageUrl("");
+    setPrice("");
+    setNutrition("");
+
     console.log(payload);
 
     try {
       const addIceCream = await addFlavor(payload);
-      return addIceCream;
     } catch (error) {
       throw error;
     }

@@ -1,5 +1,6 @@
 .App {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -13,6 +14,16 @@
 
 #comp-img {
   width: 250px;
+}
+
+main > aside {
+  min-width: 10vw;
+  min-height: 80vh;
+}
+
+main {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 /*   single icecream page   */
@@ -57,6 +68,7 @@
 }
 
 .single-icecream-container button {
+  margin: 0.5rem;
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
@@ -69,4 +81,43 @@
 
 .single-icecream-container button:hover {
   background-color: #cd853f;
+}
+
+footer {
+  padding: 10px;
+  min-height: 10vh;
+  background-color: grey;
+  width: 100;
+  text-align: center;
+  transition: color 0.3s;
+}
+
+footer:hover {
+  color: red;
+}
+
+/*   Account page   */
+
+.account-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #f9e8ff, #d5f7ff);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 50%;
+  margin: 20px auto;
+}
+
+.account-container h2 {
+  font-size: 1.8rem;
+  color: #330f49;
+  margin-bottom: 15px;
+}
+
+.account-container p {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 15px 0;
 }
