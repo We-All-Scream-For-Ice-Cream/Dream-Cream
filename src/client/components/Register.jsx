@@ -84,6 +84,7 @@ export default function AddUser({ setToken, signin }) {
           <label>
             Password:
             <input
+              type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />

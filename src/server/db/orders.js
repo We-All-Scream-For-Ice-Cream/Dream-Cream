@@ -32,7 +32,10 @@ async function addProductsToOrder(orderId, icecreamId, quantity) {
 async function getOrdersByUserId(userId) {
   try {
     const query = `
-            SELECT * FROM orders
+            SELECT id,
+            user_id,
+            total_price,
+            status  FROM orders 
             WHERE user_id = $1;
         `;
     const { rows } = await db.query(query, [userId]);

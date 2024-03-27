@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import '../style.css';
 
 function UpdateForm({ token }) {
   const navigate = useNavigate();
@@ -74,7 +75,7 @@ function UpdateForm({ token }) {
   return (
     <div className="update-form-container">
       <h2>Update Your Information</h2>
-      <form onSubmit={handleSubmit}>
+      <form className="update-form" onSubmit={handleSubmit}>
         <label>
           First Name:
           <input
